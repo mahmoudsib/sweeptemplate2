@@ -22,7 +22,10 @@ class SignupActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.signup_button).setOnClickListener {
             // Trigger signup process
-            viewModel.signup(username = "username", password = "password", email = "email")
+            val username = findViewById<EditText>(R.id.username_field).text.toString()
+            val password = findViewById<EditText>(R.id.password_field).text.toString()
+            val email = findViewById<EditText>(R.id.email_field).text.toString()
+            viewModel.signup(username = username, password = password, email = email)
         }
     }
 }
