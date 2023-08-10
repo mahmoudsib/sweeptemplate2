@@ -12,6 +12,10 @@ class LoginUseCase(private val userRepository: UserRepository) {
         }
 
         // Perform the login operation
-        return userRepository.login(username, password)
+        return try {
+            userRepository.login(username, password)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }
