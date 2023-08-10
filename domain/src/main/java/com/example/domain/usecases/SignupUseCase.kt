@@ -12,6 +12,10 @@ class SignupUseCase(private val userRepository: UserRepository) {
         }
 
         // Perform the signup operation
-        return userRepository.signup(username, password, email)
+        return try {
+            userRepository.signup(username, password, email)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }
