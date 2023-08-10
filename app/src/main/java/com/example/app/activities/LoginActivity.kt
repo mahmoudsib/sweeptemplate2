@@ -22,7 +22,9 @@ class LoginActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.login_button).setOnClickListener {
             // Trigger login process
-            viewModel.login(username = "username", password = "password")
+            val username = findViewById<EditText>(R.id.username_field).text.toString()
+            val password = findViewById<EditText>(R.id.password_field).text.toString()
+            viewModel.login(username = username, password = password)
         }
     }
 }
